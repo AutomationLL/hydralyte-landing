@@ -13,12 +13,12 @@ export default function Hero() {
 
                 {/* Text Content */}
                 <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6 }}
                     className="text-right"
                 >
-                    <span className="inline-block bg-hydra-blue/10 text-hydra-blue px-4 py-1.5 rounded-full text-sm font-bold mb-6 animate-pulse">
+                    <span className="inline-block bg-hydra-blue/10 text-hydra-blue px-4 py-1.5 rounded-full text-sm font-bold mb-6">
                         🔥 العرض لفترة محدودة
                     </span>
                     <h1 className="text-5xl md:text-7xl font-bold text-hydra-dark mb-6 leading-[1.2]">
@@ -57,9 +57,9 @@ export default function Hero() {
 
                 {/* Visual Content (Mockup) */}
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
                     className="relative"
                 >
                     <div className="relative w-full aspect-square max-w-lg mx-auto flex items-center justify-center">
@@ -67,22 +67,21 @@ export default function Hero() {
                             <motion.img
                                 src={ProductImage}
                                 alt="Hydralyte Product"
-                                animate={{ y: [0, -15, 0] }}
+                                animate={{ y: [0, -10, 0] }}
                                 transition={{
                                     repeat: Infinity,
-                                    duration: 4,
-                                    ease: "easeInOut",
-                                    times: [0, 0.5, 1]
+                                    duration: 3,
+                                    ease: "easeInOut"
                                 }}
                                 style={{ willChange: "transform" }}
-                                className="w-auto h-[120%] object-contain drop-shadow-2xl z-20 transition-transform duration-300"
+                                className="w-auto h-[120%] object-contain drop-shadow-2xl z-20"
                             />
                         </div>
 
                         {/* Floating Elements */}
                         <motion.div
-                            animate={{ y: [0, 10, 0] }}
-                            transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 1 }}
+                            animate={{ y: [0, 8, 0] }}
+                            transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut", delay: 0.5 }}
                             style={{ willChange: "transform" }}
                             className="absolute top-10 -left-4 w-28 h-28 bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl flex items-center justify-center p-4 z-30 border border-gray-100"
                         >
@@ -93,8 +92,8 @@ export default function Hero() {
                         </motion.div>
 
                         <motion.div
-                            animate={{ y: [0, -10, 0] }}
-                            transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut", delay: 0.5 }}
+                            animate={{ y: [0, -8, 0] }}
+                            transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 0.2 }}
                             style={{ willChange: "transform" }}
                             className="absolute bottom-20 -right-4 w-32 h-32 bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl flex items-center justify-center p-4 z-30 border border-gray-100"
                         >
