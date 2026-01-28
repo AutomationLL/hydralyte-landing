@@ -5,9 +5,9 @@ import ProductImage from '../assets/product-mockup.png';
 export default function Hero() {
     return (
         <section className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-gradient-to-b from-hydra-lightBlue to-white">
-            {/* Background Blobs */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-hydra-blue/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-hydra-orange/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
+            {/* Background Blobs - Hidden on mobile for performance */}
+            <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-hydra-blue/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
+            <div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-hydra-orange/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
 
             <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center relative z-10">
 
