@@ -6,7 +6,7 @@ export default function Footer() {
             <div className="container mx-auto px-4">
                 <div className="grid md:grid-cols-4 gap-8 mb-8">
                     <div className="col-span-1 md:col-span-2">
-                        <div className="text-2xl font-bold text-hydra-blue mb-4">Hydralyte</div>
+                        <div className="text-2xl font-bold text-hydra-blue mb-4">hydralyte-sa.com</div>
                         <p className="text-gray-500 max-w-sm">
                             شريكك المعتمد لترطيب صحي وسريع. انضم إلى آلاف العملاء الراضين اليوم.
                         </p>
