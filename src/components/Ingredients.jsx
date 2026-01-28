@@ -12,7 +12,7 @@ export default function Ingredients() {
                     <div className="grid grid-cols-2 gap-4">
                         <div className="p-4 rounded-xl bg-white/5 border border-white/10">
                             <div className="font-bold text-hydra-orange mb-1">خالٍ من</div>
-                            <div className="text-sm text-gray-400">75% أقل من المشروبات الأخرى، والكافيين، والألوان الصناعية</div>
+                            <div className="text-sm text-gray-400">الجلوتين، الكافيين، والألوان الصناعية</div>
                         </div>
                         <div className="p-4 rounded-xl bg-white/5 border border-white/10">
                             <div className="font-bold text-hydra-blue mb-1">مناسب لـ</div>
