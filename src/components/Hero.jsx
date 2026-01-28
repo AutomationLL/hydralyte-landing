@@ -67,16 +67,23 @@ export default function Hero() {
                             <motion.img
                                 src={ProductImage}
                                 alt="Hydralyte Product"
-                                animate={{ y: [0, -20, 0] }}
-                                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-                                className="w-auto h-[120%] object-contain drop-shadow-2xl z-20"
+                                animate={{ y: [0, -15, 0] }}
+                                transition={{
+                                    repeat: Infinity,
+                                    duration: 4,
+                                    ease: "easeInOut",
+                                    times: [0, 0.5, 1]
+                                }}
+                                style={{ willChange: "transform" }}
+                                className="w-auto h-[120%] object-contain drop-shadow-2xl z-20 transition-transform duration-300"
                             />
                         </div>
 
                         {/* Floating Elements */}
                         <motion.div
-                            animate={{ y: [0, 20, 0] }}
-                            transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
+                            animate={{ y: [0, 10, 0] }}
+                            transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 1 }}
+                            style={{ willChange: "transform" }}
                             className="absolute top-10 -left-4 w-28 h-28 bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl flex items-center justify-center p-4 z-30 border border-gray-100"
                         >
                             <div className="text-center">
@@ -86,8 +93,9 @@ export default function Hero() {
                         </motion.div>
 
                         <motion.div
-                            animate={{ y: [0, -15, 0] }}
-                            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: 0.5 }}
+                            animate={{ y: [0, -10, 0] }}
+                            transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut", delay: 0.5 }}
+                            style={{ willChange: "transform" }}
                             className="absolute bottom-20 -right-4 w-32 h-32 bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl flex items-center justify-center p-4 z-30 border border-gray-100"
                         >
                             <div className="text-center">
