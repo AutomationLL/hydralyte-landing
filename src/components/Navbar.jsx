@@ -33,7 +33,7 @@ export default function Navbar() {
                 {/* Logo */}
                 <div className="text-2xl font-bold text-hydra-blue flex items-center gap-2">
                     <Droplets className="w-8 h-8 text-hydra-orange fill-current" />
-                    <span className="text-xl md:text-2xl">hydralyte-sa.com</span>
+                    <span>Hydralyte</span>
                 </div>
 
                 {/* Desktop Menu */}
