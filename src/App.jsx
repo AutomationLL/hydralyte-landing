@@ -14,10 +14,14 @@ import Offers from './components/Offers';
 import FAQ from './components/FAQ';
 import StickyCTA from './components/StickyCTA';
 import Footer from './components/Footer';
+import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
     <div className="min-h-screen bg-white text-right" dir="rtl">
+      <SpeedInsights />
+      <Analytics />
       <TopBanner />
       <Navbar />
       <main>
