@@ -54,6 +54,43 @@
   <noscript><img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=1201306895024220&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
+
+  <!-- Triple Whale Tracking Script -->
+  <script>
+    (function () {
+      var searchParams = window.location.search;
+      if (!searchParams) return;
+
+      function appendParams(url) {
+        try {
+          var urlObj = new URL(url);
+          var currentParams = new URLSearchParams(searchParams);
+          currentParams.forEach((val, key) => {
+            if (!urlObj.searchParams.has(key)) {
+              urlObj.searchParams.append(key, val);
+            }
+          });
+          return urlObj.toString();
+        } catch (e) {
+          return url + (url.indexOf('?') === -1 ? '?' : '&') + searchParams.substring(1);
+        }
+      }
+
+      function updateLinks() {
+        var links = document.querySelectorAll('a[href*="hydralyte-sa.com"]');
+        links.forEach(function (link) {
+          if (link.getAttribute('data-tw-processed')) return;
+          link.href = appendParams(link.href);
+          link.setAttribute('data-tw-processed', 'true');
+        });
+      }
+
+      // Run on initial load and observe changes (for React/SPA)
+      window.addEventListener('load', updateLinks);
+      var observer = new MutationObserver(updateLinks);
+      observer.observe(document, { childList: true, subtree: true });
+    })();
+  </script>
 </head>
 
 <body>
