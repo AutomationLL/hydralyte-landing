@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { track } from '@vercel/analytics/react';
 import ProductImage from '../assets/product-mockup.png';
 
 export default function Hero() {
@@ -31,7 +32,10 @@ export default function Hero() {
 
                     <div className="flex flex-wrap gap-4 justify-start">
                         <button
-                            onClick={() => document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' })}
+                            onClick={() => {
+                                track('CTA Click', { name: 'Hero Main CTA', location: 'Hero Section' });
+                                document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' });
+                            }}
                             className="bg-hydra-orange text-white px-8 py-4 rounded-full font-bold hover:bg-orange-600 transition-shadow shadow-xl shadow-orange-500/30 text-lg"
                         >
                             اطلب العرض الخاص ⚡️

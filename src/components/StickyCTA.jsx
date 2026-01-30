@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { track } from '@vercel/analytics/react';
 
 export default function StickyCTA() {
     const [isVisible, setIsVisible] = useState(false);
@@ -28,8 +29,11 @@ export default function StickyCTA() {
                             <div className="text-lg font-black text-hydra-blue">198 SAR</div>
                         </div>
                         <button
-                            onClick={() => document.getElementById('offers').scrollIntoView({ behavior: 'smooth' })}
-                            className="flex-1 bg-hydra-orange text-white py-3 px-6 rounded-xl font-bold shadow-lg shadow-orange-500/30 animate-pulse"
+                            onClick={() => {
+                                track('CTA Click', { name: 'Sticky CTA', location: 'Sticky Footer' });
+                                document.getElementById('offers').scrollIntoView({ behavior: 'smooth' });
+                            }}
+                            className="flex-1 bg-hydra-orange text-white py-3 px-6 rounded-xl font-bold text-lg shadow-lg shadow-orange-500/30 animate-pulse"
                         >
                             اطلب العرض الآن
                         </button>

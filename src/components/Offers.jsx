@@ -1,6 +1,7 @@
 import React from 'react';
 import { Check, ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { track } from '@vercel/analytics/react';
 
 const offers = [
     {
@@ -84,6 +85,7 @@ export default function Offers() {
 
                             <a
                                 href={offer.link}
+                                onClick={() => track('Offer Click', { name: offer.title, price: offer.price, location: 'Offers Section' })}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={`w-full py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 ${offer.bestValue ? 'bg-hydra-orange text-white hover:bg-orange-600 shadow-lg shadow-orange-500/30' : 'bg-gray-900 text-white hover:bg-gray-800'}`}
