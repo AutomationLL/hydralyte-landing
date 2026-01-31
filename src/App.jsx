@@ -14,6 +14,8 @@ import Offers from './components/Offers';
 import FAQ from './components/FAQ';
 import StickyCTA from './components/StickyCTA';
 import Footer from './components/Footer';
+import ExitIntentPopup from './components/ExitIntentPopup';
+import ErrorBoundary from './components/ErrorBoundary';
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import { Analytics } from "@vercel/analytics/react"
 
@@ -39,6 +41,9 @@ function App() {
       </main>
       <Footer />
       <StickyCTA />
+      <ErrorBoundary>
+        <ExitIntentPopup />
+      </ErrorBoundary>
     </div>
   );
 }

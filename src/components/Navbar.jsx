@@ -47,7 +47,7 @@ export default function Navbar() {
                             {link.name}
                         </a>
                     ))}
-                    <button className="bg-hydra-orange text-white px-6 py-2 rounded-full font-bold hover:bg-orange-600 transition-colors shadow-lg hover:shadow-orange-500/30">
+                    <button className="bg-hydra-orange text-white px-6 py-2 rounded-full font-bold hover:bg-orange-600 transition-colors shadow-lg hover:shadow-orange-500/30 animate-pulse">
                         تسوق الآن
                     </button>
                 </div>

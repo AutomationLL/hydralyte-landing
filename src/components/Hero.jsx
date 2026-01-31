@@ -19,27 +19,36 @@ export default function Hero() {
                     transition={{ duration: 0.6 }}
                     className="text-right"
                 >
-                    <span className="inline-block bg-hydra-blue/10 text-hydra-blue px-4 py-1.5 rounded-full text-sm font-bold mb-6">
-                        🔥 العرض لفترة محدودة
-                    </span>
-                    <h1 className="text-5xl md:text-7xl font-bold text-hydra-dark mb-6 leading-[1.2]">
-                        وداعاً <span className="text-hydra-blue">للعطش</span><br />
-                        والدوخة <span className="text-hydra-orange">نهائياً</span>
+                    <div className="flex items-center gap-2 mb-6">
+                        <span className="flex text-yellow-400">
+                            {'★'.repeat(5)}
+                        </span>
+                        <span className="text-gray-600 font-bold text-sm">أكثر من 5000 عميل سعيد</span>
+                    </div>
+
+                    <h1 className="text-4xl md:text-7xl font-bold text-hydra-dark mb-4 md:mb-6 leading-[1.2]">
+                        استعد <span className="text-hydra-blue">نشاطك وحيويتك</span><br />
+                        في <span className="text-hydra-orange">دقائق معدودة</span>
                     </h1>
                     <p className="text-lg text-gray-600 mb-8 max-w-lg mr-auto md:mr-0 ml-auto leading-relaxed">
                         الحل الطبي الأسرع لتعويض السوائل. اشرب هيدرالايت واستعد نشاطك في دقائق.
                     </p>
 
                     <div className="flex flex-wrap gap-4 justify-start">
-                        <button
-                            onClick={() => {
-                                track('CTA Click', { name: 'Hero Main CTA', location: 'Hero Section' });
-                                document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' });
-                            }}
-                            className="bg-hydra-orange text-white px-8 py-4 rounded-full font-bold hover:bg-orange-600 transition-shadow shadow-xl shadow-orange-500/30 text-lg"
-                        >
-                            اطلب العرض الخاص ⚡️
-                        </button>
+                        <div className="flex flex-col items-center gap-2">
+                            <button
+                                onClick={() => {
+                                    track('CTA Click', { name: 'Hero Main CTA', location: 'Hero Section' });
+                                    document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' });
+                                }}
+                                className="bg-hydra-orange text-white px-8 py-4 rounded-full font-bold hover:bg-orange-600 transition-shadow shadow-xl shadow-orange-500/30 text-lg w-full md:w-auto"
+                            >
+                                اطلب العرض الخاص ⚡️
+                            </button>
+                            <span className="text-xs text-gray-500 font-medium">
+                                🛡️ ضمان استرجاع الأموال 100%
+                            </span>
+                        </div>
                         <button
                             onClick={() => document.getElementById('science')?.scrollIntoView({ behavior: 'smooth' })}
                             className="bg-white text-hydra-dark border-2 border-gray-100 px-8 py-4 rounded-full font-bold hover:border-hydra-blue hover:text-hydra-blue transition-colors"
@@ -79,6 +88,8 @@ export default function Hero() {
                                 }}
                                 style={{ willChange: "transform" }}
                                 className="w-auto h-[120%] object-contain drop-shadow-2xl z-20"
+                                fetchPriority="high"
+                                loading="eager"
                             />
                         </div>
 
