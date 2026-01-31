@@ -78,19 +78,20 @@ export default function DehydrationQuiz() {
 
     return (
         <div className="w-full max-w-xl mx-auto">
-            <div className="bg-white/80 backdrop-blur-xl border border-white/40 rounded-[2.5rem] shadow-2xl shadow-hydra-blue/10 p-6 md:p-10 relative overflow-hidden">
-                {/* Decorative Background Mesh within Card */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-hydra-blue/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-hydra-orange/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
+            {/* Optimized container with reduced blur for mobile */}
+            <div className="bg-white/90 md:bg-white/80 md:backdrop-blur-xl border border-white/40 rounded-[2.5rem] shadow-2xl shadow-hydra-blue/10 p-6 md:p-10 relative overflow-hidden">
+                {/* Simplified Decorative Background for Mobile */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-hydra-blue/5 rounded-full blur-xl md:blur-2xl -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-hydra-orange/5 rounded-full blur-xl md:blur-2xl translate-y-1/2 -translate-x-1/2" />
 
                 <AnimatePresence mode="wait">
                     {!showResult ? (
                         <motion.div
                             key={currentStep}
-                            initial={{ opacity: 0, x: 50 }}
+                            initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -50 }}
-                            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                            exit={{ opacity: 0, x: -20 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
                             className="flex flex-col h-full min-h-[350px] justify-between relative z-10"
                         >
                             {/* Header */}
@@ -108,13 +109,12 @@ export default function DehydrationQuiz() {
                                 {questions[currentStep].options.map((opt, idx) => (
                                     <motion.button
                                         key={idx}
-                                        initial={{ opacity: 0, y: 20 }}
+                                        initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: idx * 0.1 + 0.2 }}
+                                        transition={{ delay: idx * 0.05, duration: 0.2 }}
                                         onClick={() => handleAnswer(opt.score)}
-                                        whileHover={{ scale: 1.02, x: -4 }}
                                         whileTap={{ scale: 0.98 }}
-                                        className="w-full p-4 rounded-xl border border-gray-100 bg-white hover:border-hydra-blue/30 hover:shadow-md hover:shadow-hydra-blue/5 transition-all flex items-center justify-between group"
+                                        className="w-full p-4 rounded-xl border border-gray-100 bg-white hover:border-hydra-blue/30 active:bg-blue-50 transition-all flex items-center justify-between group"
                                     >
                                         <span className="font-bold text-gray-600 group-hover:text-hydra-blue transition-colors text-lg">{opt.text}</span>
                                         <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
@@ -137,18 +137,16 @@ export default function DehydrationQuiz() {
                     ) : (
                         <motion.div
                             key="result"
-                            initial={{ opacity: 0, scale: 0.9 }}
+                            initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.4, ease: "easeOut" }}
                             className="text-center py-8 relative z-10"
                         >
-                            <motion.div
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
-                                transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                            <div
                                 className="w-20 h-20 mx-auto bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6"
                             >
                                 <CheckCircle className="w-10 h-10" />
-                            </motion.div>
+                            </div>
 
                             <h3 className="text-2xl font-bold text-gray-800 mb-2">
                                 نتيجتك: <span className={getResult().color}>{getResult().status}</span>
@@ -157,14 +155,12 @@ export default function DehydrationQuiz() {
                                 {getResult().text}
                             </p>
 
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
+                            <button
                                 onClick={() => document.getElementById('offers').scrollIntoView({ behavior: 'smooth' })}
-                                className="w-full bg-hydra-orange text-white py-4 rounded-xl font-bold shadow-lg shadow-orange-500/20 hover:shadow-xl hover:shadow-orange-500/30 transition-all text-lg animate-pulse"
+                                className="w-full bg-hydra-orange text-white py-4 rounded-xl font-bold shadow-lg shadow-orange-500/20 active:scale-95 transition-all text-lg animate-pulse"
                             >
                                 احصل على باقة البداية الآن
-                            </motion.button>
+                            </button>
                         </motion.div>
                     )}
                 </AnimatePresence>
