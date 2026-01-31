@@ -78,8 +78,12 @@ export default function DehydrationQuiz() {
 
     return (
         <div className="w-full max-w-xl mx-auto">
-            {/* Optimized container with reduced blur for mobile */}
-            <div className="bg-white/90 md:bg-white/80 md:backdrop-blur-xl border border-white/40 rounded-[2.5rem] shadow-2xl shadow-hydra-blue/10 p-6 md:p-10 relative overflow-hidden">
+            {/* Optimized container with smooth layout resizing */}
+            <motion.div
+                layout
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="bg-white/90 md:bg-white/80 md:backdrop-blur-xl border border-white/40 rounded-[2.5rem] shadow-2xl shadow-hydra-blue/10 p-6 md:p-10 relative overflow-hidden"
+            >
                 {/* Simplified Decorative Background for Mobile */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-hydra-blue/5 rounded-full blur-xl md:blur-2xl -translate-y-1/2 translate-x-1/2" />
                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-hydra-orange/5 rounded-full blur-xl md:blur-2xl translate-y-1/2 -translate-x-1/2" />
@@ -91,7 +95,7 @@ export default function DehydrationQuiz() {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -20 }}
-                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            transition={{ duration: 0.25, ease: "easeInOut" }}
                             className="flex flex-col h-full min-h-[350px] justify-between relative z-10"
                         >
                             {/* Header */}
@@ -164,7 +168,7 @@ export default function DehydrationQuiz() {
                         </motion.div>
                     )}
                 </AnimatePresence>
-            </div>
+            </motion.div>
         </div>
     );
 }
