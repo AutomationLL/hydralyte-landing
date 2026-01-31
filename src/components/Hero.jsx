@@ -42,21 +42,24 @@ export default function Hero() {
                     </div>
 
                     <h1 className="text-4xl md:text-6xl font-black text-hydra-dark mb-10 leading-tight md:leading-normal">
-                        هل تعاني من{' '}
-                        <span className="inline-block text-hydra-orange">
+                        هل تعاني من<br className="md:hidden" />
+                        <span className="inline-flex justify-center min-w-[140px] md:min-w-[220px] text-hydra-orange relative top-2 mx-2">
                             <AnimatePresence mode="wait">
                                 <motion.span
                                     key={index}
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="inline-block"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="absolute inset-0 flex items-center justify-center whitespace-nowrap"
                                 >
                                     {WORDS[index]}
                                 </motion.span>
+                                {/* Invisible spacer to keep height/width consistent locally if needed */}
+                                <span className="opacity-0">{WORDS[index]}</span>
                             </AnimatePresence>
-                        </span>{' '}
+                        </span>
+                        <br className="md:hidden" />
                         دون سبب واضح؟
                     </h1>
 
