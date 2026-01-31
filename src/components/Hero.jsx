@@ -1,123 +1,93 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { track } from '@vercel/analytics/react';
-import ProductImage from '../assets/product-mockup.png';
+import { Star } from 'lucide-react';
+import DehydrationQuiz from './DehydrationQuiz';
+
+const WORDS = [
+    "الخمول",
+    "الصداع",
+    "التعب",
+    "الدوخة",
+    "فقدان التركيز"
+];
 
 export default function Hero() {
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIndex((prev) => (prev + 1) % WORDS.length);
+        }, 2500);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
-        <section className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-gradient-to-b from-hydra-lightBlue to-white">
-            {/* Background Blobs - Hidden on mobile for performance */}
+        <section className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden bg-gradient-to-b from-hydra-lightBlue to-white">
+            {/* Background Blobs */}
             <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-hydra-blue/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
             <div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-hydra-orange/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
 
-            <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10">
 
-                {/* Text Content */}
+                {/* Text Content (Right Side) */}
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="text-right"
+                    className="text-right order-1"
                 >
-                    <div className="flex items-center gap-2 mb-6">
-                        <span className="flex text-yellow-400">
-                            {'★'.repeat(5)}
-                        </span>
-                        <span className="text-gray-600 font-bold text-sm">أكثر من 5000 عميل سعيد</span>
+                    <div className="inline-flex items-center gap-2 bg-red-100 border border-red-200 rounded-full px-4 py-1 mb-6">
+                        <span className="text-red-600 font-bold text-sm">🛑 هل تشعر بالتعب الدائم؟</span>
                     </div>
 
-                    <h1 className="text-4xl md:text-7xl font-bold text-hydra-dark mb-4 md:mb-6 leading-[1.2]">
-                        استعد <span className="text-hydra-blue">نشاطك وحيويتك</span><br />
-                        في <span className="text-hydra-orange">دقائق معدودة</span>
+                    <h1 className="text-4xl md:text-6xl font-black text-hydra-dark mb-10 leading-tight md:leading-normal">
+                        هل تعاني من{' '}
+                        <span className="inline-block text-hydra-orange">
+                            <AnimatePresence mode="wait">
+                                <motion.span
+                                    key={index}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="inline-block"
+                                >
+                                    {WORDS[index]}
+                                </motion.span>
+                            </AnimatePresence>
+                        </span>{' '}
+                        دون سبب واضح؟
                     </h1>
-                    <p className="text-lg text-gray-600 mb-8 max-w-lg mr-auto md:mr-0 ml-auto leading-relaxed">
-                        الحل الطبي الأسرع لتعويض السوائل. اشرب هيدرالايت واستعد نشاطك في دقائق.
+
+                    <p className="text-lg text-gray-600 mb-8 max-w-lg ml-auto leading-relaxed">
+                        75% من الناس يعانون من الجفاف المزمن دون علمهم. هذا يؤثر على طاقتك، تركيزك، ومزاجك.
                     </p>
 
-                    <div className="flex flex-wrap gap-4 justify-start">
-                        <div className="flex flex-col items-center gap-2">
-                            <button
-                                onClick={() => {
-                                    track('CTA Click', { name: 'Hero Main CTA', location: 'Hero Section' });
-                                    document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' });
-                                }}
-                                className="bg-hydra-orange text-white px-8 py-4 rounded-full font-bold hover:bg-orange-600 transition-shadow shadow-xl shadow-orange-500/30 text-lg w-full md:w-auto"
-                            >
-                                اطلب العرض الخاص ⚡️
-                            </button>
-                            <span className="text-xs text-gray-500 font-medium">
-                                🛡️ ضمان استرجاع الأموال 100%
-                            </span>
+                    <div className="flex items-center gap-2 mb-8 bg-gray-50 px-4 py-2 rounded-xl w-fit ml-auto">
+                        <div className="flex text-yellow-500">
+                            {[...Array(5)].map((_, i) => (
+                                <Star key={i} className="w-5 h-5 fill-current" />
+                            ))}
                         </div>
-                        <button
-                            onClick={() => document.getElementById('science')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="bg-white text-hydra-dark border-2 border-gray-100 px-8 py-4 rounded-full font-bold hover:border-hydra-blue hover:text-hydra-blue transition-colors"
-                        >
-                            كيف يعمل؟
-                        </button>
-                    </div>
-                    <div className="mt-12 flex items-center justify-end gap-6 text-sm text-gray-500 font-medium">
-                        <span className="flex items-center gap-2">
-                            <span className="w-2 h-2 bg-green-500 rounded-full" />
-                            سكر أقل (أقل بـ 75% من المشروبات الأخرى)
-                        </span>
-                        <span className="flex items-center gap-2">
-                            <span className="w-2 h-2 bg-green-500 rounded-full" />
-                            مدعوم علمياً
-                        </span>
+                        <div className="text-sm text-gray-700 font-bold">
+                            أكثر من 5,000 شخص استعادوا نشاطهم
+                        </div>
                     </div>
                 </motion.div>
 
-                {/* Visual Content (Mockup) */}
+                {/* Quiz Card (Left Side - Originally Product Image) */}
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="relative"
+                    className="relative order-2"
                 >
-                    <div className="relative w-full aspect-square max-w-lg mx-auto flex items-center justify-center">
-                        <div className="relative z-10 w-full h-full flex items-center justify-center">
-                            <motion.img
-                                src={ProductImage}
-                                alt="Hydralyte Product"
-                                animate={{ y: [0, -10, 0] }}
-                                transition={{
-                                    repeat: Infinity,
-                                    duration: 3,
-                                    ease: "easeInOut"
-                                }}
-                                style={{ willChange: "transform" }}
-                                className="w-auto h-[120%] object-contain drop-shadow-2xl z-20"
-                                fetchPriority="high"
-                                loading="eager"
-                            />
-                        </div>
-
-                        {/* Floating Elements */}
-                        <motion.div
-                            animate={{ y: [0, 8, 0] }}
-                            transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut", delay: 0.5 }}
-                            style={{ willChange: "transform" }}
-                            className="absolute top-10 -left-4 w-28 h-28 bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl flex items-center justify-center p-4 z-30 border border-gray-100"
-                        >
-                            <div className="text-center">
-                                <div className="text-hydra-blue font-bold text-2xl">3x</div>
-                                <div className="text-sm text-gray-600 font-bold">امتصاص أسرع</div>
-                            </div>
-                        </motion.div>
-
-                        <motion.div
-                            animate={{ y: [0, -8, 0] }}
-                            transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 0.2 }}
-                            style={{ willChange: "transform" }}
-                            className="absolute bottom-20 -right-4 w-32 h-32 bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl flex items-center justify-center p-4 z-30 border border-gray-100"
-                        >
-                            <div className="text-center">
-                                <div className="text-hydra-orange font-bold text-xl leading-snug">سكر أقل</div>
-                                <div className="text-[10px] text-gray-500 font-bold leading-tight">بـ 75% من المشروبات الأخرى</div>
-                            </div>
-                        </motion.div>
+                    <div className="relative z-20">
+                        {/* We embed the Quiz directly here, utilizing its existing card style */}
+                        <DehydrationQuiz />
                     </div>
+
                 </motion.div>
 
             </div>

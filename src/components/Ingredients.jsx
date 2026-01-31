@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Ingredients() {
     return (
-        <section className="py-20 bg-hydra-dark text-white">
+        <section id="ingredients" className="py-20 bg-hydra-dark text-white">
             <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
                 <div className="flex-1">
                     <h2 className="text-3xl md:text-5xl font-bold mb-6">نحن منفتحون تماماً.<br /> <span className="text-hydra-blue">لا أسرار، فقط علم.</span></h2>

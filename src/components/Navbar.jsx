@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Droplets } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Droplets } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
@@ -38,55 +36,15 @@ export default function Navbar() {
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-8">
-                    {navLinks.map((link) => (
-                        <a
-                            key={link.name}
-                            href={link.href}
-                            className="text-hydra-dark hover:text-hydra-orange font-medium transition-colors"
-                        >
-                            {link.name}
-                        </a>
-                    ))}
+                    <a href="#science" className="text-gray-600 hover:text-hydra-blue font-medium transition-colors">كيف يعمل؟</a>
+                    <a href="#ingredients" className="text-gray-600 hover:text-hydra-blue font-medium transition-colors">المكونات</a>
+                    <a href="#reviews" className="text-gray-600 hover:text-hydra-blue font-medium transition-colors">الآراء</a>
+                    <a href="#faq" className="text-gray-600 hover:text-hydra-blue font-medium transition-colors">الأسئلة الشائعة</a>
                     <button className="bg-hydra-orange text-white px-6 py-2 rounded-full font-bold hover:bg-orange-600 transition-colors shadow-lg hover:shadow-orange-500/30 animate-pulse">
                         تسوق الآن
                     </button>
                 </div>
-
-                {/* Mobile Menu Button */}
-                <div className="md:hidden">
-                    <button onClick={() => setIsOpen(!isOpen)} className="text-hydra-dark">
-                        {isOpen ? <X /> : <Menu />}
-                    </button>
-                </div>
             </div>
-
-            {/* Mobile Menu Overlay */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-white border-b absolute w-full overflow-hidden"
-                    >
-                        <div className="flex flex-col p-4 gap-4">
-                            {navLinks.map((link) => (
-                                <a
-                                    key={link.name}
-                                    href={link.href}
-                                    className="text-hydra-dark font-medium hover:text-hydra-orange"
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    {link.name}
-                                </a>
-                            ))}
-                            <button className="bg-hydra-orange text-white py-3 rounded-lg font-bold w-full">
-                                تسوق الآن
-                            </button>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </nav>
+        </nav >
     );
 }

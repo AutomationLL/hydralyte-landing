@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import TopBanner from './components/TopBanner';
 import Hero from './components/Hero';
 import TrustBar from './components/TrustBar';
+import DehydrationQuiz from './components/DehydrationQuiz';
 import Features from './components/Features';
 import Comparison from './components/Comparison';
 import Challenge from './components/Challenge';
@@ -29,6 +30,9 @@ function App() {
       <main>
         <Hero />
         <TrustBar />
+        <ErrorBoundary>
+          {/* Quiz Moved to Hero Section */}
+        </ErrorBoundary>
         <Challenge />
         <Features />
         <Comparison />
