@@ -86,17 +86,17 @@ export default function DehydrationQuiz() {
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-orange-50 rounded-full translate-y-1/2 -translate-x-1/2" />
 
                 {!showResult ? (
-                    <div className="relative overflow-hidden min-h-[350px]">
-                        {/* Slider Track */}
+                    <div className="relative overflow-hidden min-h-[400px]" dir="ltr">
+                        {/* Slider Track - Forced LTR for predictable sliding, text remains RTL via inner divs */}
                         <motion.div
                             animate={{ x: `-${currentStep * 100}%` }}
-                            transition={{ type: "spring", stiffness: 300, damping: 30 }} // Smooth mechanical slide
-                            className="flex h-full"
+                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                            className="flex h-full w-full absolute inset-0"
                         >
                             {questions.map((q, i) => (
-                                <div key={q.id} className="min-w-full px-1 flex flex-col h-full justify-between">
+                                <div key={q.id} className="min-w-full w-full px-4 flex flex-col h-full justify-between" dir="rtl">
                                     {/* Header */}
-                                    <div className="text-center mb-6">
+                                    <div className="text-center mt-4 mb-6">
                                         <div className="inline-flex items-center justify-center p-3 bg-blue-50 rounded-2xl mb-4">
                                             {q.icon}
                                         </div>
@@ -106,7 +106,7 @@ export default function DehydrationQuiz() {
                                     </div>
 
                                     {/* Options */}
-                                    <div className="space-y-3">
+                                    <div className="space-y-3 mb-8">
                                         {q.options.map((opt, idx) => (
                                             <button
                                                 key={idx}
@@ -114,7 +114,7 @@ export default function DehydrationQuiz() {
                                                 className="w-full p-4 rounded-xl border border-gray-200 bg-white hover:border-hydra-blue/50 active:bg-blue-50 active:scale-[0.98] transition-all duration-150 flex items-center justify-between group"
                                             >
                                                 <span className="font-bold text-gray-600 group-hover:text-hydra-blue">{opt.text}</span>
-                                                <ArrowLeft className="w-5 h-5 text-gray-300 group-hover:text-hydra-blue" />
+                                                <ArrowLeft className="w-5 h-5 text-gray-300 group-hover:text-hydra-blue rotate-180" />
                                             </button>
                                         ))}
                                     </div>
@@ -122,8 +122,8 @@ export default function DehydrationQuiz() {
                             ))}
                         </motion.div>
 
-                        {/* Progress Dots - Absolute positioned at bottom */}
-                        <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-2 pb-1">
+                        {/* Progress Dots */}
+                        <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-2 z-10">
                             {questions.map((_, i) => (
                                 <div
                                     key={i}
