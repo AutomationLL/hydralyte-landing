@@ -1,26 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion'; // Removed AnimatePresence
 import { track } from '@vercel/analytics/react';
 import { Star } from 'lucide-react';
 import DehydrationQuiz from './DehydrationQuiz';
 
-const WORDS = [
-    "الخمول",
-    "الصداع",
-    "التعب",
-    "الدوخة",
-    "فقدان التركيز"
-];
-
 export default function Hero() {
-    const [index, setIndex] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setIndex((prev) => (prev + 1) % WORDS.length);
-        }, 2500);
-        return () => clearInterval(interval);
-    }, []);
 
     return (
         <section className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden bg-gradient-to-b from-hydra-lightBlue to-white">
@@ -42,24 +26,10 @@ export default function Hero() {
                     </div>
 
                     <h1 className="text-4xl md:text-6xl font-black text-hydra-dark mb-10 leading-tight md:leading-normal">
-                        هل تعاني من<br className="md:hidden" />
-                        <span className="inline-flex justify-center min-w-[140px] md:min-w-[220px] text-hydra-orange relative top-2 mx-2">
-                            <AnimatePresence mode="wait">
-                                <motion.span
-                                    key={index}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -10 }}
-                                    transition={{ duration: 0.2 }}
-                                    className="absolute inset-0 flex items-center justify-center whitespace-nowrap"
-                                >
-                                    {WORDS[index]}
-                                </motion.span>
-                                {/* Invisible spacer to keep height/width consistent locally if needed */}
-                                <span className="opacity-0">{WORDS[index]}</span>
-                            </AnimatePresence>
-                        </span>
-                        <br className="md:hidden" />
+                        هل تعاني من{' '}
+                        <span className="text-hydra-orange">
+                            التعب والصداع
+                        </span>{' '}
                         دون سبب واضح؟
                     </h1>
 
